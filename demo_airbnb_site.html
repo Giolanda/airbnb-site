@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Airbnb Homes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .property-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .property {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            padding: 10px;
+        }
+        .property img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .property h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .contact-form {
+            padding: 20px;
+            text-align: center;
+        }
+        .contact-form input, .contact-form textarea {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Airbnb Properties</h1>
+        <p>Explore our beautiful homes for your next vacation.</p>
+    </header>
+
+    <section class="property-list">
+        <div class="property">
+            <img src="https://via.placeholder.com/300x200" alt="Property 1">
+            <h2>Seaside Villa</h2>
+            <p>3 bedrooms, 2 bathrooms, stunning sea view.</p>
+            <button>View on Airbnb</button>
+        </div>
+        <div class="property">
+            <img src="https://via.placeholder.com/300x200" alt="Property 2">
+            <h2>City Center Apartment</h2>
+            <p>2 bedrooms, 1 bathroom, in the heart of the city.</p>
+            <button>View on Airbnb</button>
+        </div>
+        <div class="property">
+            <img src="https://via.placeholder.com/300x200" alt="Property 3">
+            <h2>Mountain Retreat</h2>
+            <p>4 bedrooms, 3 bathrooms, surrounded by nature.</p>
+            <button>View on Airbnb</button>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</body>
+</html>
