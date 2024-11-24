@@ -123,84 +123,62 @@
                 </div>
             </div>
         </div>
-        <div class="section">
-    <h2>Availability</h2>
-    <div id="calendar"></div>
+       <div class="section">
+    <h2>Availability Search</h2>
+    <form id="availability-form" style="display: flex; align-items: center; gap: 10px;">
+        <label for="check-in">Check-in:</label>
+        <input type="date" id="check-in" name="check-in" required>
+
+        <label for="staying">Staying for:</label>
+        <select id="staying" name="staying">
+            <option value="1">1 night</option>
+            <option value="2">2 nights</option>
+            <option value="3">3 nights</option>
+            <option value="4">4 nights</option>
+            <option value="5">5 nights</option>
+        </select>
+
+        <label for="rooms">Rooms/Houses:</label>
+        <select id="rooms" name="rooms">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label for="adults">Adults:</label>
+        <select id="adults" name="adults">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <button type="submit" style="background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Search
+        </button>
+    </form>
+    <div id="results" style="margin-top: 20px;"></div>
 </div>
 
-<style>
-    #calendar {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 10px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    #calendar div {
-        padding: 15px;
-        text-align: center;
-        border-radius: 5px;
-        font-size: 14px;
-        font-weight: bold;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    #calendar .unavailable {
-        background-color: #FF6B6B;
-        color: white;
-    }
-    #calendar .available {
-        background-color: #D4EDDA;
-        color: black;
-    }
-    #calendar .header {
-        font-size: 16px;
-        background-color: #007BFF;
-        color: white;
-        text-transform: uppercase;
-    }
-</style>
-
 <script>
-    const unavailableDates = ["2024-11-25", "2024-11-26", "2024-12-01"]; // Προσθέστε μη διαθέσιμες ημερομηνίες εδώ
+    document.getElementById("availability-form").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    function createCalendar() {
-        const calendar = document.getElementById("calendar");
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const checkIn = document.getElementById("check-in").value;
+        const staying = document.getElementById("staying").value;
+        const rooms = document.getElementById("rooms").value;
+        const adults = document.getElementById("adults").value;
 
-        // Προσθήκη επικεφαλίδων (ημέρες εβδομάδας)
-        days.forEach(day => {
-            const header = document.createElement("div");
-            header.textContent = day;
-            header.classList.add("header");
-            calendar.appendChild(header);
-        });
-
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = today.getMonth();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-        // Προσθήκη ημερών του μήνα
-        for (let i = 1; i <= daysInMonth; i++) {
-            const date = new Date(year, month, i);
-            const formattedDate = date.toISOString().split("T")[0];
-            const dayDiv = document.createElement("div");
-
-            dayDiv.textContent = i;
-            if (unavailableDates.includes(formattedDate)) {
-                dayDiv.classList.add("unavailable");
-            } else {
-                dayDiv.classList.add("available");
-            }
-
-            calendar.appendChild(dayDiv);
+        // Example Logic for Availability
+        const unavailableDates = ["2024-11-25", "2024-11-26", "2024-12-01"]; // Replace with your unavailable dates
+        if (unavailableDates.includes(checkIn)) {
+            document.getElementById("results").innerHTML = `<p style="color: red;">Sorry, the selected date (${checkIn}) is unavailable.</p>`;
+        } else {
+            document.getElementById("results").innerHTML = `<p style="color: green;">The property is available for ${staying} night(s) from ${checkIn} for ${rooms} room(s) and ${adults} adult(s).</p>`;
         }
-    }
-
-    createCalendar();
+    });
 </script>
+
 
     <footer class="footer">
         <p>&copy; 2024 Property Website | All rights reserved.</p>
