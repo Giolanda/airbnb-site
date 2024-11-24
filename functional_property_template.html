@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
+            height: 500px;
+            position: relative;
+        }
+        .hero h2 {
+            color: white;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .feature {
+            flex: 1 1 calc(33% - 20px);
+            padding: 20px;
+            background: #007BFF;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .feature h3 {
+            margin-top: 0;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Property</h1>
+    </header>
+    <div class="hero">
+        <h2>Your Dream Stay Awaits</h2>
+    </div>
+    <div class="content">
+        <div class="section">
+            <h2>About the Property</h2>
+            <p>This is where you can provide a description of your property, highlighting its unique features, location, and amenities.</p>
+        </div>
+        <div class="section">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 1">
+                <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 2">
+                <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 3">
+            </div>
+        </div>
+        <div class="section">
+            <h2>Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Wi-Fi</h3>
+                    <p>Enjoy high-speed internet during your stay.</p>
+                </div>
+                <div class="feature">
+                    <h3>Location</h3>
+                    <p>Located in the heart of the city, close to attractions.</p>
+                </div>
+                <div class="feature">
+                    <h3>Comfort</h3>
+                    <p>Modern furnishings and comfortable bedding.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Availability</h2>
+            <p>Check the availability calendar or contact us for more details.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Property Website | All rights reserved.</p>
+    </footer>
+</body>
+</html>
