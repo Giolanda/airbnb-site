@@ -128,73 +128,80 @@
     <div id="calendar"></div>
 </div>
 
+<style>
+    #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    #calendar div {
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #calendar .unavailable {
+        background-color: #FF6B6B;
+        color: white;
+    }
+    #calendar .available {
+        background-color: #D4EDDA;
+        color: black;
+    }
+    #calendar .header {
+        font-size: 16px;
+        background-color: #007BFF;
+        color: white;
+        text-transform: uppercase;
+    }
+</style>
+
 <script>
-    const unavailableDates = ["2024-11-25", "2024-11-26", "2024-12-01"]; // Αντικαταστήστε με τις δικές σας ημερομηνίες
+    const unavailableDates = ["2024-11-25", "2024-11-26", "2024-12-01"]; // Προσθέστε μη διαθέσιμες ημερομηνίες εδώ
 
     function createCalendar() {
         const calendar = document.getElementById("calendar");
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        // Προσθήκη επικεφαλίδων (ημέρες εβδομάδας)
+        days.forEach(day => {
+            const header = document.createElement("div");
+            header.textContent = day;
+            header.classList.add("header");
+            calendar.appendChild(header);
+        });
+
         const today = new Date();
         const year = today.getFullYear();
         const month = today.getMonth();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        const table = document.createElement("table");
-        table.style.width = "100%";
-        table.style.borderCollapse = "collapse";
-
-        // Create the header
-        const headerRow = document.createElement("tr");
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        days.forEach(day => {
-            const th = document.createElement("th");
-            th.textContent = day;
-            th.style.padding = "10px";
-            th.style.backgroundColor = "#007BFF";
-            th.style.color = "white";
-            th.style.textAlign = "center";
-            headerRow.appendChild(th);
-        });
-        table.appendChild(headerRow);
-
-        // Create the days
-        let row = document.createElement("tr");
+        // Προσθήκη ημερών του μήνα
         for (let i = 1; i <= daysInMonth; i++) {
             const date = new Date(year, month, i);
-            const cell = document.createElement("td");
-            cell.textContent = i;
-            cell.style.padding = "10px";
-            cell.style.textAlign = "center";
-            cell.style.cursor = "pointer";
-
             const formattedDate = date.toISOString().split("T")[0];
+            const dayDiv = document.createElement("div");
+
+            dayDiv.textContent = i;
             if (unavailableDates.includes(formattedDate)) {
-                cell.style.backgroundColor = "#FF6B6B"; // Κόκκινο για μη διαθέσιμες ημερομηνίες
-                cell.style.color = "white";
+                dayDiv.classList.add("unavailable");
             } else {
-                cell.style.backgroundColor = "#D4EDDA"; // Πράσινο για διαθέσιμες ημερομηνίες
-                cell.style.color = "black";
+                dayDiv.classList.add("available");
             }
 
-            row.appendChild(cell);
-
-            // Check if the row is complete
-            if (date.getDay() === 6) {
-                table.appendChild(row);
-                row = document.createElement("tr");
-            }
+            calendar.appendChild(dayDiv);
         }
-
-        if (row.children.length > 0) {
-            table.appendChild(row); // Add the last row if not complete
-        }
-
-        calendar.appendChild(table);
     }
 
     createCalendar();
 </script>
 
-    </div>
     <footer class="footer">
         <p>&copy; 2024 Property Website | All rights reserved.</p>
     </footer>
